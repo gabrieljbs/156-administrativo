@@ -1,0 +1,7 @@
+{
+  "name": "administrativo/156-belem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
