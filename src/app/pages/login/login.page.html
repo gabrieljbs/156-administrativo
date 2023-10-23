@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <div class="back">
+    <form class="form"  [formGroup]="userForm">
+      <ion-img src="./../../../assets/logo.png"></ion-img>
+      <ion-input
+        formControlName="email"
+        fill="outline"
+        placeholder="Digite seu email"
+        type="email"
+      ></ion-input>
+      <ion-input
+        formControlName="password"
+        fill="outline"
+        placeholder="********"
+        type="password"
+      ></ion-input>
+      <ion-label>Esqueci minha senha</ion-label>
+      <ion-button (click)="login()">Login</ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,148 @@
+ion-content {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+h1 {
+  color: #7301b1;
+}
+ion-row {
+  border-bottom: solid 2px #c9c9c9;
+}
+ion-col {
+  color: #4b5459;
+  align-self: center;
+}
+.titulo {
+  display: flex;
+  margin: auto;
+  justify-content: start;
+  align-items: center;
+  padding-left: 10vw;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  gap: 20px;
+  ion-icon{
+    font-size: 70px;
+    color: #7301b1;
+  }
+  h1{
+    font-weight: 700;
+  }
+}
+
+.linhas{
+  width: 200px;
+}
+
+.filter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #fff;
+  border-radius: 8px;
+  color: #4b5459;
+  height: 42px;
+  ion-label{
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  ion-icon{
+    color: #4b5459;
+    padding: 10px;
+    font-size: 24px;
+  }
+
+}
+.lista {
+  margin: auto;
+  border-radius: 8px;
+  border: solid 1px #c9c9c9;
+  width: 85vw;
+  background: #FFF;
+}
+.control {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 85vw;
+  ion-searchbar {
+    width: 350px;
+    --background: #fff;
+    --border-radius: 8px;
+    color: #4b5459;
+  }
+}
+ion-checkbox {
+  --size: 24px;
+  --checkbox-background-checked: #007df1;
+}
+ion-checkbox::part(container) {
+  border-radius: 8px;
+  border: 2px solid #c9c9c9;
+}
+hr {
+  color: #c9c9c9;
+  size: 2px;
+  height: 2px;
+}
+
+#popover-button{
+  --background: #fff;
+  color: #4b5459;
+}
+ion-popover {
+  --background: none;
+  --backdrop-opacity: 0;
+  --box-shadow: none;
+  --color: white;
+}
+ion-popover ion-content {
+  width: 150px;
+  height: 50px;
+  ion-list{
+      background: #fff;
+      ion-item{
+        color: #4b5459;
+        --ion-text-color:#000;
+      }
+  }
+}
+ion-popover::part(backdrop) {
+  background-color: rgb(255, 255, 255);
+}
+.delete {
+  text-transform: none;
+  --background: none;
+  --box-shadow: 0;
+  ion-label {
+    color: #f40404;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+.success {
+  --background: #009b3e;
+  text-transform: none;
+  ion-label {
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+.warning {
+  text-transform: none;
+  --background: #e3a44c;
+  ion-label {
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}

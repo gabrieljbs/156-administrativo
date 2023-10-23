@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-item>
+    <ion-avatar slot="start">
+      <img
+        alt="Silhouette of a person's head"
+        src="https://ionicframework.com/docs/img/demos/avatar.svg"
+      />
+    </ion-avatar>
+    <ion-label>
+      <ion-label>{{data.nome}}</ion-label>
+      <ion-label>Ativo</ion-label>
+    </ion-label>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-title>Informações pessoais</ion-title>
+  <ion-input
+    label="Nome completo"
+    value={{data.nome}}
+    fill="outline"
+    labelPlacement="stacked"
+    placeholder="Enter text"
+  ></ion-input>
+  <ion-input
+    label="Email"
+    value={{data.email}}
+    fill="outline"
+    labelPlacement="stacked"
+    placeholder="Enter text"
+  ></ion-input>
+  <ion-input
+  fill="outline"
+  label="Telefone"
+  placeholder="+55 (xx) xxxx-xxxx"
+  labelPlacement="stacked"
+  [maskito]="phoneMask"
+  [maskitoElement]="maskPredicate"
+  value="9193216691"
+></ion-input>
+</ion-content>
+<ion-footer>
+  <ion-item>
+    <ion-button class="danger" slot="end" (click)="cancel()"
+      ><ion-label>Cancelar</ion-label></ion-button
+    >
+    <ion-button class="success" slot="end" (click)="confirm()"
+      ><ion-label>Confirma</ion-label></ion-button
+    >
+  </ion-item>
+</ion-footer>

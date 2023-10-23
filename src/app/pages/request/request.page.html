@@ -1,0 +1,77 @@
+<app-header></app-header>
+<app-sidmenu></app-sidmenu>
+<ion-content [fullscreen]="true">
+  <div class="titulo">
+    <ion-icon name="document"></ion-icon>
+    <h1>Requisições</h1>
+  </div>
+
+  <div class="control">
+    <ion-item class="linhas">
+      <ion-label>Mostrar</ion-label>
+
+      <ion-button id="popover-button">
+        10
+        <ion-icon name="chevron-down"></ion-icon>
+      </ion-button>
+      <ion-label>Paginas</ion-label>
+
+      <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+        <ng-template >
+          <ion-content>
+            <ion-list>
+              <ion-item [button]="true" value="10" [detail]="false"
+                >10 linha</ion-item
+              >
+              <ion-item [button]="true" value="20" [detail]="false"
+                >20 linhas</ion-item
+              >
+              <ion-item [button]="true" value="30" [detail]="false"
+                >30 linhas</ion-item
+              >
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
+    <ion-item>
+      <ion-searchbar placeholder="Buscar Usuario" ></ion-searchbar>
+    </ion-item>
+
+    <div class="filter" slot="end" >
+      <ion-icon name="funnel"></ion-icon>
+      <ion-label>Filtro</ion-label>
+      <ion-icon name="chevron-down"></ion-icon>
+    </div>
+  </div>
+
+  <div class="lista" >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1.5"><ion-label>Titulo</ion-label></ion-col>
+        <ion-col size="3"><ion-label>Endereço</ion-label></ion-col>
+        <ion-col size="2"><ion-label>Descrição</ion-label></ion-col>
+        <ion-col size="1"><ion-label>Criação</ion-label></ion-col>
+        <ion-col size="1"><ion-label>Status</ion-label></ion-col>
+        <ion-col size="1"><ion-label>Atualização</ion-label></ion-col>
+        <ion-col size="2"><ion-label>Observação</ion-label></ion-col>
+        <ion-col
+          ><ion-icon name="pencil" size="large"></ion-icon
+        ></ion-col>
+      </ion-row>
+      <ion-row   *ngFor="let item of results">
+        <ion-col size="1.5"><ion-label>{{item.titulo}}</ion-label></ion-col>
+        <ion-col size="3"><ion-label>{{item.local.label}}</ion-label></ion-col>
+        <ion-col size="2"><ion-label>{{item.descricao}}</ion-label></ion-col>
+        <ion-col size="1" ><ion-label>{{item.abertura}}</ion-label></ion-col>
+        <ion-col size="1"><ion-label>{{item.status}}</ion-label></ion-col>
+        <ion-col size="1"><ion-label>{{item.atualizacao}}</ion-label></ion-col>
+        <ion-col size="2"><ion-label></ion-label></ion-col>
+        <ion-col
+          ><ion-icon name="pencil" size="large" (click)="modalOpen(item)"></ion-icon
+        ></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
