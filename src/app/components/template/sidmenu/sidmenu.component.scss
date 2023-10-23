@@ -1,0 +1,43 @@
+ion-toolbar {
+  --background: #7301b1;
+}
+#main-content {
+  background: #7301b1;
+  width: 92px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-right: 30px;
+  padding-left: 30px;
+  justify-content: start;
+  padding-top: 10vh;
+  z-index: 1;
+}
+
+.ion-padding {
+  --background: #7301b1;
+}
+
+ion-item {
+  --background: none;
+  ion-label{
+    --color: #fff !important;
+    text-align: center;
+  }
+}
+
+ion-icon {
+  color: #fff;
+}
+
+ion-menu::part(backdrop) {
+  display: none;
+}
+
+ion-img{
+  height: 50px;
+  width: 90px;
+
+}
+

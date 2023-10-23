@@ -1,0 +1,17 @@
+ion-header{
+  ion-toolbar{
+    --background: #7301B1;
+    ion-img{
+      height: 50px;
+      width: 90px;
+    }
+    ion-icon{
+      padding-right: 25px;
+      color: #fff;
+    }
+
+    ion-label{
+      color: #fff;
+    }
+  }
+}
