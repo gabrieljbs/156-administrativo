@@ -9,13 +9,18 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 })
 export class RequestsComponent  implements OnInit {
   @Input() data: any;
+  public editDate:any = {}
+  public status = ['Em analise','Em andamento','Fechado','Concluido']
+
   constructor(
     private modalCtrl: ModalController,
     private alertController: AlertController,
     private firestore: FirestoreService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.editDate = this.data
+  }
 
   cancel() {
     return this.modalCtrl.dismiss(null, 'cancel');
@@ -48,5 +53,14 @@ export class RequestsComponent  implements OnInit {
     });
 
     await alert.present();
+  }
+
+  update(){
+    this.editDate.atualizacao = new Date()
+    this.firestore.updateRequest(this.editDate);
+  }
+
+  handleEvent(e:any){
+    this.editDate.status = e.detail.value
   }
 }

@@ -25,13 +25,15 @@ export class RequestPage implements OnInit {
   async date() {
     const data = await this.firestore.readRequests();
     data.forEach((doc) => {
-      this.interfaceRequests.push(doc.data());
+        const data = doc.data()
+        Object.assign(data,{id:doc.id})
+      this.interfaceRequests.push(data);
       this.results = [...this.interfaceRequests];
     });
   }
 
   async modalOpen(data: any) {
-    console.log('adsasd');
+
     const modal = await this.modalCtrl.create({
       component: RequestsComponent,
       cssClass: 'my-modal-class',

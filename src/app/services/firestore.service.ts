@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getDocs, query, setDoc, where } from '@angular/fire/firestore';
+import { getDocs, orderBy, query, setDoc, where } from '@angular/fire/firestore';
 import { Firestore, collection, doc } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
@@ -19,15 +19,21 @@ export class FirestoreService {
   }
 
   async updateUser(data:any){
-    console.log('Chamando');
-    await setDoc(doc(this.dataUser, data.uid),{
+    //Alterar em todos os campos que chama essa função
+    await setDoc(doc(this.dataUser, data.id),{
       nome:data.nome,
       email: data.email,
           });
   }
 
+  async updateRequest(data:any){
+    console.log(data)
+    await setDoc(doc(this.solicitationCollection, data.id),data);
+
+  }
+
   async readRequests() {
-    const q = query(this.solicitationCollection);
+    const q = query(this.solicitationCollection, orderBy('abertura','desc'));
     return await getDocs(q);
   }
 
