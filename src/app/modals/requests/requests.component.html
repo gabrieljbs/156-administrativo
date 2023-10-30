@@ -5,16 +5,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid >
+  <ion-grid>
     <ion-row>
       <ion-col size="4">
         <ion-item>
           <div class="back">
-            <ion-icon name={{data.icon}}></ion-icon>
+            <ion-icon name="{{ editDate.icon }}"></ion-icon>
           </div>
           <ion-label>
             <ion-title>Titulo</ion-title>
-            <ion-label>{{data.titulo}}</ion-label>
+            <ion-label>{{ editDate.titulo }}</ion-label>
           </ion-label>
         </ion-item></ion-col
       >
@@ -22,54 +22,66 @@
       <ion-col size="4">
         <ion-input
           label="Data de criação"
-          value={{data.abertura}}
+          [(ngModel)]="editDate.abertura"
           labelPlacement="floating"
           fill="outline"
         ></ion-input>
       </ion-col>
 
       <ion-col size="4">
-        <ion-input
-          label="Status"
-          value="{{data.status}}"
-          labelPlacement="floating"
-          fill="outline"
-        ></ion-input>
+        <ion-list>
+          <ion-item>
+            <ion-select
+              interface="popover"
+              placeholder="Status"
+              (ionChange)="handleEvent($event)"
+            >
+              <ion-select-option
+                *ngFor="let item of status"
+                value="{{ item }}"
+                >{{ item }}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </ion-list>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col size="4">
         <ion-textarea
-        label="Endereço"
-        value="{{data.local.label}}"
-        labelPlacement="floating"
-        fill="outline"
-      ></ion-textarea>
+          label="Endereço"
+          [(ngModel)]="editDate.local.label"
+          labelPlacement="floating"
+          fill="outline"
+        ></ion-textarea>
       </ion-col>
 
       <ion-col size="4">
         <ion-textarea
-        label="Descrição"
-        value="{{data.descricao}}"
-        labelPlacement="floating"
-        fill="outline"
-      ></ion-textarea>
+          label="Descrição"
+          [(ngModel)]="editDate.descricao"
+          labelPlacement="floating"
+          fill="outline"
+        ></ion-textarea>
       </ion-col>
 
       <ion-col size="4">
         <ion-textarea
-        label="Obeservação"
-        value=""
-        labelPlacement="floating"
-        fill="outline"
-      ></ion-textarea>
+          label="Obeservação"
+          [(ngModel)]="editDate.observacao"
+          labelPlacement="floating"
+          fill="outline"
+        ></ion-textarea>
       </ion-col>
     </ion-row>
   </ion-grid>
 
   <div class="imagens">
-    <ion-label>Imagens</ion-label>
+    <ion-label>Imagens:</ion-label>
+    <div>
+      <img src="{{ editDate.url }}" alt="" />
+    </div>
   </div>
 </ion-content>
 
@@ -78,7 +90,7 @@
     <ion-button class="danger" slot="end" (click)="cancel()"
       ><ion-label>Cancelar</ion-label></ion-button
     >
-    <ion-button class="success" slot="end"
+    <ion-button class="success" slot="end" (click)="update()"
       ><ion-label>Confirma</ion-label></ion-button
     >
   </ion-item>

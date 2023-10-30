@@ -9,13 +9,12 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore, } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-import { UserComponent } from './modals/user/user.component';
-import { RequestsComponent } from './modals/requests/requests.component';
 import { MaskitoModule } from '@maskito/angular';
+import { ModalsModule } from './modals/modals.module';
 
 
 @NgModule({
-  declarations: [AppComponent,UserComponent,RequestsComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -26,7 +25,8 @@ import { MaskitoModule } from '@maskito/angular';
     provideStorage(() => getStorage()),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
-    MaskitoModule
+    MaskitoModule,
+    ModalsModule
 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

@@ -51,7 +51,7 @@
             <ion-col><ion-label>Endereço</ion-label></ion-col>
           </ion-row>
           <ion-row *ngFor="let item of andamento">
-            <ion-col size="2"><ion-label>{{item.abertura}}</ion-label></ion-col>
+            <ion-col size="2"><ion-label>{{item.abertura|date:'dd/MM'}}</ion-label></ion-col>
             <ion-col size="2"><ion-label>{{item.titulo}}</ion-label></ion-col>
             <ion-col><ion-label>{{item.local.label}}</ion-label></ion-col>
           </ion-row>
@@ -74,7 +74,7 @@
             <ion-col size="4"><ion-label>{{item.titulo}}</ion-label></ion-col>
             <ion-col></ion-col>
             <ion-col size="5" style="text-align: end"
-              ><ion-label>{{item.atualizacao}}</ion-label></ion-col
+              ><ion-label>{{item.atualizacao|date:'dd/MM'}}</ion-label></ion-col
             >
           </ion-row>
         </ion-grid>
