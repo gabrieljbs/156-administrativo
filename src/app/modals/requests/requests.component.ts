@@ -20,6 +20,8 @@ export class RequestsComponent  implements OnInit {
 
   ngOnInit() {
     this.editDate = this.data
+
+    this.editDate.abertura  = this.editDate.abertura.toDate()
   }
 
   cancel() {
@@ -63,4 +65,6 @@ export class RequestsComponent  implements OnInit {
   handleEvent(e:any){
     this.editDate.status = e.detail.value
   }
+
+
 }
