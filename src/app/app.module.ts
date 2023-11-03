@@ -20,11 +20,9 @@ import { ModalsModule } from './modals/modals.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
-    provideStorage(() => getStorage()),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
     MaskitoModule,
     ModalsModule
 
