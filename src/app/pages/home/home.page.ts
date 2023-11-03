@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Chart } from 'chart.js/auto';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -9,11 +10,17 @@ import { Chart } from 'chart.js/auto';
 export class HomePage implements OnInit {
   @ViewChild('myCanvas', { static: true })
   element!: ElementRef;
-  public num:number=0;
-  public interfaceRequests: any = [];
+  public num: number = 0;
+  public interfaceRequests: any[] = [];
+  public user:any
   public fechado: any = [];
   public andamento: any = [];
-  constructor(private firestore: FirestoreService) {}
+  public results: any[] = [];
+  constructor(private firestore: FirestoreService) {
+    this.requests();
+    this.getuser();
+
+  }
 
   ngOnInit() {
     new Chart(this.element.nativeElement, {
@@ -42,7 +49,6 @@ export class HomePage implements OnInit {
         ],
       },
     });
-    this.requests();
   }
 
   async requests() {
@@ -52,13 +58,18 @@ export class HomePage implements OnInit {
     });
 
     this.fechado = this.interfaceRequests.filter((res: any) => {
-      return res.status == 'Concluido' ||  res.status == 'Cancelado';
+      return res.status == 'Concluido' || res.status == 'Cancelado';
     });
 
     this.andamento = this.interfaceRequests.filter((res: any) => {
-      return res.status !== 'Concluido' &&  res.status !== 'Cancelado';
+      return res.status !== 'Concluido' && res.status !== 'Cancelado';
     });
-
-    console.log(this.fechado);
   }
+
+
+  async getuser(){
+    const data = await this.firestore.readUser();
+    this.user = data.size
+  }
+
 }
