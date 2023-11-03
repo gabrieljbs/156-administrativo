@@ -25,6 +25,12 @@
       <ion-icon name="chevron-forward"></ion-icon>
     </ion-item>
 
+    <ion-item disabled="false" routerLink="/tourism" lines="none">
+      <ion-icon name="image-outline" size="large"></ion-icon>
+      <ion-label>Turismo</ion-label>
+      <ion-icon name="chevron-forward"></ion-icon>
+    </ion-item>
+
     <ion-item disabled="true" lines="none">
       <ion-icon name="reader" size="large"></ion-icon>
       <ion-label>Relatorio</ion-label>
@@ -33,7 +39,7 @@
 
   </ion-content>
 </ion-menu>
-<div class="ion-page" id="main-content" (mouseover)="openMenu()" >
+<div class="ion-page" id="main-content" (click)="openMenu()" >
   <ion-icon name="home" size="large"></ion-icon>
   <ion-icon name="person-circle" size="large" ></ion-icon>
   <ion-icon name="document" size="large"></ion-icon>
