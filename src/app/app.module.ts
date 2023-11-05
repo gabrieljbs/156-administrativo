@@ -11,18 +11,18 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { MaskitoModule } from '@maskito/angular';
 import { ModalsModule } from './modals/modals.module';
-
+import { StorageModule } from '@angular/fire/storage'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
     MaskitoModule,
     ModalsModule
 

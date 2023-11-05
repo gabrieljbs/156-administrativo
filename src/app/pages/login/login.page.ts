@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -16,7 +16,8 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastController: ToastController
   ) {
     this.userForm = this.formBuilder.group({
       email: '',
@@ -44,6 +45,7 @@ export class LoginPage implements OnInit {
   redirect(path: string) {
     this.router.navigate([path]);
   }
+
   async presentToast(e: string) {
     if (e === 'Firebase: Error (auth/invalid-email).') {
       this.error = 'Email é inválido';
@@ -52,5 +54,15 @@ export class LoginPage implements OnInit {
     } else {
       this.error = e;
     }
+    const toast = await this.toastController.create({
+      message: this.error,
+      duration: 7000,
+      position: 'bottom',
+      color: 'danger',
+    });
+
+    await toast.present();
   }
+
+
 }
