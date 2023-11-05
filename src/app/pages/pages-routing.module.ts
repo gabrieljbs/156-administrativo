@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: PagesPage
+  },  {
+    path: 'tourism',
+    loadChildren: () => import('./tourism/tourism.module').then( m => m.TourismPageModule)
   },
+
 
 ];
 

@@ -63,9 +63,9 @@
         <ion-col size="1.5"><ion-label>{{item.titulo}}</ion-label></ion-col>
         <ion-col size="3"><ion-label>{{item.local.label}}</ion-label></ion-col>
         <ion-col size="2"><ion-label>{{item.descricao}}</ion-label></ion-col>
-        <ion-col size="1" ><ion-label>{{item.abertura|date:'dd/MM'}}</ion-label></ion-col>
+        <ion-col size="1" ><ion-label>{{item.abertura.toDate() | date:'dd/MM/yyyy' }}</ion-label></ion-col>
         <ion-col size="1"><ion-label>{{item.status}}</ion-label></ion-col>
-        <ion-col size="1"><ion-label>{{item.atualizacao|date:'dd/MM/yyyy'}}</ion-label></ion-col>
+        <ion-col size="1"><ion-label>{{item.atualizacao.toDate() | date:'dd/MM/yyyy' }}</ion-label></ion-col>
         <ion-col size="2"><ion-label></ion-label></ion-col>
         <ion-col
           ><ion-icon name="pencil" size="large" (click)="modalOpen(item)"></ion-icon

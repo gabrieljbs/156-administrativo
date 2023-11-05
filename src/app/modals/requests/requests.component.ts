@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import {
+  AlertController,
+  LoadingController,
+  ModalController,
+} from '@ionic/angular';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
@@ -7,19 +11,27 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   templateUrl: './requests.component.html',
   styleUrls: ['./requests.component.scss'],
 })
-export class RequestsComponent  implements OnInit {
+export class RequestsComponent implements OnInit {
   @Input() data: any;
-  public editDate:any = {}
-  public status = ['Em analise','Em andamento','Fechado','Concluido']
-
+  public editDate: any = {};
+  public status = ['Em analise', 'Em andamento', 'Cancelado', 'Concluido'];
+  private loading: any;
   constructor(
     private modalCtrl: ModalController,
     private alertController: AlertController,
-    private firestore: FirestoreService
-  ) { }
+    private firestore: FirestoreService,
+    private loadingCtrl: LoadingController
+  ) {}
+
+  async showLoading() {
+    this.loading = await this.loadingCtrl.create();
+    this.loading.present();
+  }
 
   ngOnInit() {
-    this.editDate = this.data
+    this.editDate = this.data;
+
+    this.editDate.abertura = this.editDate.abertura.toDate();
   }
 
   cancel() {
@@ -36,31 +48,32 @@ export class RequestsComponent  implements OnInit {
           text: 'Concelar',
           role: 'cancel',
           handler: () => {
-            this.alertController.dismiss
+            this.alertController.dismiss;
           },
         },
         {
           text: 'Sim',
           role: 'confirm',
           handler: async () => {
-            await this.firestore.updateUser(this.data)
-            this.alertController.dismiss
-            ;
+            await this.firestore.updateUser(this.data);
+            this.alertController.dismiss;
           },
         },
       ],
-
     });
 
     await alert.present();
   }
 
-  update(){
-    this.editDate.atualizacao = new Date()
-    this.firestore.updateRequest(this.editDate);
+  async update() {
+    this.showLoading();
+    this.editDate.atualizacao = new Date();
+    await this.firestore.updateRequest(this.editDate);
+    this.cancel();
+    this.loading.dismiss();
   }
 
-  handleEvent(e:any){
-    this.editDate.status = e.detail.value
+  handleEvent(e: any) {
+    this.editDate.status = e.detail.value;
   }
 }
