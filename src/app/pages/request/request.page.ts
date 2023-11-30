@@ -33,12 +33,11 @@ export class RequestPage implements OnInit {
   }
 
   async modalOpen(data: any) {
-
     const modal = await this.modalCtrl.create({
       component: RequestsComponent,
       cssClass: 'my-modal-class',
       componentProps: {
-        data,
+        data: { ...data }
       },
     });
     modal.present();

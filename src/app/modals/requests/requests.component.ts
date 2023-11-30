@@ -27,14 +27,20 @@ export class RequestsComponent implements OnInit {
     this.loading = await this.loadingCtrl.create();
     this.loading.present();
   }
+  ionViewWillEnter() {
+    if (this.data) {
+      this.editDate = { ...this.data };
+      this.editDate.abertura = this.editDate.abertura.toDate();
+    }
+  }
 
   ngOnInit() {
     this.editDate = this.data;
-
     this.editDate.abertura = this.editDate.abertura.toDate();
   }
 
   cancel() {
+
     return this.modalCtrl.dismiss(null, 'cancel');
   }
 
@@ -48,7 +54,7 @@ export class RequestsComponent implements OnInit {
           text: 'Concelar',
           role: 'cancel',
           handler: () => {
-            this.alertController.dismiss;
+            alert.dismiss();
           },
         },
         {
@@ -56,7 +62,7 @@ export class RequestsComponent implements OnInit {
           role: 'confirm',
           handler: async () => {
             await this.firestore.updateUser(this.data);
-            this.alertController.dismiss;
+            alert.dismiss();
           },
         },
       ],
